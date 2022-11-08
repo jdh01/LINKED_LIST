@@ -7,31 +7,28 @@ struct Node
 	Node* link; 
 };
 
-Node* head;
-
-void InsertAtStart(int data)
+void InsertAtStart(Node** pointerToHead, int data)
 {
 	Node* temp = new Node; //malloc returns void pointer, so we type case to Node*
 	temp->data = data;
-	temp->link = head;
-	head = temp;
+	temp->link = *pointerToHead; //remember to dereference
+	*pointerToHead = temp;
 }
 
-void Print()
+Node Print(Node* head)
 {
-	Node* temp = head;
 	std::cout << "List is: ";
-	while (temp != NULL)
+	while (head != NULL)
 	{
-		std::cout << temp->data;
-		temp = temp->link;
+		std::cout << head->data;
+		head = head->link;
 	}
 	std::cout << "\n";
 }
 
 int main()
 {
-	head = NULL;
+	Node* head = NULL;
 	std::cout << "How many numbers" << std::endl;
 	int n, i, x;
 	std::cin >> n;
@@ -40,7 +37,7 @@ int main()
 	{
 		std::cout << "Enter a number" << std::endl;
 		std::cin >> x;
-		InsertAtStart(x);
-		Print();
+		InsertAtStart(&head, x);
+		Print(head);
 	}
 }
