@@ -15,29 +15,68 @@ void InsertAtStart(Node** pointerToHead, int data)
 	*pointerToHead = temp;
 }
 
-Node Print(Node* head)
+void Insert(Node** head, int data, int position)
+{
+	Node* temp1 = new Node;
+	temp1->data = data;
+	temp1->link = NULL;
+	if (position == 1) {
+		temp1->link = *head;
+		*head = temp1;
+		return;
+	}
+	Node* temp2 = *head;
+	for (int i = 0; i < position-2; i++) {
+		temp2 = temp2->link;
+	}
+	temp1->link = temp2->link;
+	temp2->link = temp1;
+}
+
+void Print(Node* head)
 {
 	std::cout << "List is: ";
 	while (head != NULL)
 	{
-		std::cout << head->data;
+		std::cout << head->data << " ";
 		head = head->link;
 	}
 	std::cout << "\n";
 }
 
+void ListCount(Node* head)
+{
+	int count = 1;
+	Node* temp;
+	temp = head->link;
+	while (temp != NULL) {
+		temp = temp->link;
+		count++;
+	}
+	std::cout << "The list is " << count << " elements long." << std::endl;
+}
+
 int main()
 {
 	Node* head = NULL;
-	std::cout << "How many numbers" << std::endl;
-	int n, i, x;
-	std::cin >> n;
+	int n, x, j;
 
-	for (int i = 0; i < n; i++)
+	std::cout << "The list currently has no data." << std::endl;
+	std::cout << "Enter a number into the list: ";
+	std::cin >> x;
+	Insert(&head, x, 1); //List name, Data, Position
+	Print(head);
+
+	while (1)
 	{
-		std::cout << "Enter a number" << std::endl;
+		std::cout << "Enter a new number into the list: ";
 		std::cin >> x;
-		InsertAtStart(&head, x);
+		std::cout << "What index in the list?: ";
+		std::cin >> j;
+		//InsertAtStart(&head, x);
+
+		Insert(&head, x, j); //List name, Data, Position
+		ListCount(head);
 		Print(head);
 	}
 }
