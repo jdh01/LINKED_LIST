@@ -1,6 +1,6 @@
 ﻿  LINKED_LIST.cpp
-C:\dev\LINKED_LIST\LINKED_LIST\LINKED_LIST.cpp(102,12): warning C4101: 'j': unreferenced local variable
-C:\dev\LINKED_LIST\LINKED_LIST\LINKED_LIST.cpp(102,9): warning C4101: 'x': unreferenced local variable
-C:\dev\LINKED_LIST\LINKED_LIST\LINKED_LIST.cpp(102,6): warning C4101: 'n': unreferenced local variable
+C:\dev\LINKED_LIST\LINKED_LIST\LINKED_LIST.cpp(114,12): warning C4101: 'j': unreferenced local variable
+C:\dev\LINKED_LIST\LINKED_LIST\LINKED_LIST.cpp(114,9): warning C4101: 'x': unreferenced local variable
+C:\dev\LINKED_LIST\LINKED_LIST\LINKED_LIST.cpp(114,6): warning C4101: 'n': unreferenced local variable
 C:\dev\LINKED_LIST\LINKED_LIST\LINKED_LIST.cpp(33): warning C4715: 'Insert': not all control paths return a value
   LINKED_LIST.vcxproj -> C:\dev\LINKED_LIST\x64\Debug\LINKED_LIST.exe

@@ -52,7 +52,7 @@ void Delete(Node* head, int position)
 	delete temp2;
 }
 
-void Print(Node* head)
+void IterativePrint(Node* head)
 {
 	std::cout << "List is: ";
 	while (head != NULL)
@@ -63,8 +63,25 @@ void Print(Node* head)
 	std::cout << "\n";
 }
 
+void RecursivePrint(Node* head)
+{
+	if (head == NULL) 
+		return;
+	std::cout << head->data << " ";
+	RecursivePrint(head->link);
+}
+
+void ReverseRecursivePrint(Node* head)
+{
+	if (head == NULL) 
+		return;
+	RecursivePrint(head->link);
+	std::cout << head->data << " ";
+}
+
 void ListCount(Node* head)
 {
+	std::cout << "\n";
 	int count = 1;
 	Node* temp;
 	temp = head->link;
@@ -111,16 +128,19 @@ int main()
 	Insert(&head, 2, 2); //List name, Data, Position
 	Insert(&head, 3, 3); //List name, Data, Position
 	Insert(&head, 4, 4); //List name, Data, Position
-	Print(head);
-	ListCount(head);
 	Insert(&head, 5, 5); //List name, Data, Position
 	Insert(&head, 6, 6); //List name, Data, Position
 	Insert(&head, 7, 7); //List name, Data, Position
-	Print(head);
+	IterativePrint(head);
+	std::cout << "List is : ";
+	RecursivePrint(head);
+	std::cout << "\n";
+	std::cout << "List in reverse is : ";
+	ReverseRecursivePrint(head);
 	ListCount(head);
 	IterativeReverse(&head);
 	//Delete(head, 1); //Counting from 0
 
-	Print(head);
+	IterativePrint(head);
 	std::cin.get();
 }
