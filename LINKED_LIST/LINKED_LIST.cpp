@@ -75,7 +75,7 @@ void ReverseRecursivePrint(Node* head)
 {
 	if (head == NULL) 
 		return;
-	RecursivePrint(head->link);
+	ReverseRecursivePrint(head->link);
 	std::cout << head->data << " ";
 }
 
@@ -108,6 +108,19 @@ Node* IterativeReverse(Node** head)
 	return *head;
 }
 
+void RecursiveReverse(Node** head, Node* headcpy)
+{
+	if (headcpy->link == NULL)
+	{
+		*head = headcpy;
+		return;
+	}
+	RecursiveReverse(head, headcpy->link);
+	Node* q = headcpy->link;
+	q->link = headcpy;
+	headcpy->link = NULL;
+}
+
 int main()
 {
 	Node* head = NULL;
@@ -131,16 +144,27 @@ int main()
 	Insert(&head, 5, 5); //List name, Data, Position
 	Insert(&head, 6, 6); //List name, Data, Position
 	Insert(&head, 7, 7); //List name, Data, Position
+
 	IterativePrint(head);
-	std::cout << "List is : ";
+
+	std::cout << "List is: ";
 	RecursivePrint(head);
 	std::cout << "\n";
-	std::cout << "List in reverse is : ";
-	ReverseRecursivePrint(head);
-	ListCount(head);
-	IterativeReverse(&head);
-	//Delete(head, 1); //Counting from 0
 
+	std::cout << "List printed in reverse is : ";
+	ReverseRecursivePrint(head);
+	std::cout << "\n";
+
+	//ListCount(head);
+	std::cout << "[INFO] List has been iteratively reversed.";
+	IterativeReverse(&head);
+	std::cout << "\n";
+
+	IterativePrint(head);
+	//Delete(head, 1); //Counting from 0
+	std::cout << "[INFO] List has been recursively reversed.";
+	RecursiveReverse(&head, head);
+	std::cout << "\n";
 	IterativePrint(head);
 	std::cin.get();
 }
